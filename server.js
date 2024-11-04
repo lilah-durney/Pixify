@@ -48,10 +48,9 @@ const addImageToDatabase = async (imageURL, prompt) => {
     try {
         const savedImage = await image.save();
         console.log("Image saved to the database:", savedImage);
-        return savedImage;  // Return the saved image for logging or further use
+        return savedImage; 
     } catch (error) {
         console.error("Error saving image to database:", error);
-        throw new Error("Error saving image to database");  // Re-throw to catch in route handler
     }
 }
 
