@@ -1,11 +1,25 @@
 import React from 'react';
-import "/Library.css"
+// import "/Library.css"
 
-const Library = () => {
+
+interface CreateProps {
+    sessionID: string;
+}
+
+const Library: React.FC<CreateProps> = ({sessionID}) => {
+
+
+
+
+    
+    
+    
     return (
         <div>
             <h1>Library Page</h1>
         </div>
+
+
         
     );
  };

@@ -3,6 +3,7 @@ import OpenAI from 'openai';
 import express from 'express';
 import mongoose from 'mongoose';
 import Image from './models/Images.js'; 
+import cors from 'cors';
 
 dotenv.config();
 
@@ -11,6 +12,11 @@ const openai = new OpenAI({apiKey: api});
 
 const app = express();
 const PORT = 3000;
+
+app.use(cors({
+    origin:'http://localhost:5173',
+    methods: ['GET','POST','OPTIONS'],
+}))
 
 app.use(express.json());
 
@@ -29,6 +35,7 @@ mongoose.connect(mongoURI)
 
 //Route to generate image based on user's prompt
 app.post('/generate-image', async(req, res) => {
+    console.log("Received prompt:", req.body.prompt);
     const {prompt} = req.body;
     try {
         const image = await openai.images.generate({prompt});
@@ -43,8 +50,8 @@ app.post('/generate-image', async(req, res) => {
 
 
 // Function to add image to database
-const addImageToDatabase = async (imageURL, prompt) => {
-    const image = new Image({ imageURL, prompt });
+const addImageToDatabase = async (imageURL, prompt, sessionID) => {
+    const image = new Image({ imageURL, prompt, sessionID });
     try {
         const savedImage = await image.save();
         console.log("Image saved to the database:", savedImage);
@@ -58,7 +65,7 @@ const addImageToDatabase = async (imageURL, prompt) => {
 app.post("/save-image", async (req, res) => {
     console.log("Received request to save image:", req.body);
 
-    const { imageURL, prompt } = req.body;
+    const { imageURL, prompt, sessionID } = req.body;
 
     // Validate fields
     if (!imageURL || !prompt) {
@@ -68,7 +75,7 @@ app.post("/save-image", async (req, res) => {
 
     try {
         console.log("Calling addImageToDatabase...");
-        const savedImage = await addImageToDatabase(imageURL, prompt); 
+        const savedImage = await addImageToDatabase(imageURL, prompt, sessionID); 
         console.log("Image saved successfully:", savedImage);
         res.status(200).json({ message: "Image saved!" });
     } catch (error) {
