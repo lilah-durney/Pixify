@@ -1,0 +1,99 @@
+/* Make the body flexible to allow scrolling */
+body {
+    background-color: #1a0b1f;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow-y: auto; /* Allow scrolling if necessary */
+}
+
+/* Container for Create page, uses flexbox for dynamic layout */
+.create-container {
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    min-height: 400px; 
+    padding-bottom: 20px; 
+    overflow: visible;
+    margin-top: 400px;
+}
+
+/* Textarea styling */
+.prompt-box {
+    width: 100%;
+    max-width: 600px;
+    height: 150px;
+    padding: 10px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    overflow-y: auto; 
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+/* Placeholder styling */
+.prompt-box::placeholder {
+    text-align: left;
+    color: #888;
+}
+
+/* Button styling */
+button {
+    background-color: #fff;
+    color: #1a0b1f;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #c2c2c2;
+}
+
+/* Styling for the generated image */
+.generated-image {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.generated-image img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+/* Add to library button styling */
+.add-to-lib-button {
+    margin-top: 10px; /* Space between image and the "Add to Library" button */
+}
+
+/* Add to library button styles */
+.add-to-library-button {
+    background-color: #fff;
+    color: #1a0b1f;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-library-button:hover {
+    background-color: #c2c2c2;
+}

@@ -1,0 +1,95 @@
+/* General body and layout */
+body {
+    background-color: #1a0b1f;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Side Navbar (Initially hidden) */
+.side-navbar {
+    height: 100vh; /* Full screen height */
+    width: 250px; /* Width of the sidebar */
+    background-color: black;
+    position: fixed; /* Stay fixed on the left side */
+    top: 0;
+    left: -250px; /* Initially hidden off the screen */
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: left 0.3s ease; /* Slide in and out effect */
+    overflow-y: auto;
+}
+
+/* Show sidebar when active (when toggled) */
+.side-navbar.open {
+    left: 0; /* Moves sidebar into view */
+}
+
+/* Hamburger Menu Button */
+.hamburger-menu {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    font-size: 40px;
+    color: white;
+    z-index: 1000; /* Make sure it appears on top */
+}
+
+/* Navbar Links */
+.side-navbar a {
+
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+    border-bottom: none;
+}
+
+.home-link {
+    margin-top: 80px;
+}
+
+.side-navbar ul li {
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: none; /* Remove the bottom border */
+  }
+
+/* Hover effect for navbar links */
+.side-navbar a:hover {
+    background-color: #34495e;
+}
+
+/* Active link styling */
+/* .side-navbar a.active {
+    background-color: #2980b9;
+} */
+
+/* Main content area */
+.main-content {
+    margin-left: 0; /* Adjust for the sidebar space */
+    padding: 20px;
+    width: 100%;
+    transition: margin-left 0.3s ease; /* For smooth transition when sidebar opens */
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+    .side-navbar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 0; /* Reset margin-left for smaller screens */
+    }
+}

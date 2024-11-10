@@ -1,42 +1,43 @@
-// import React, {useState} from 'react';
-import './App.css'
-import React, { useEffect, useState } from 'react'
-import Home from './pages/Home/Home.tsx'
-import Create from './pages/Create/Create.tsx'
-// import Library from './pages/Library/Library.tsx'
-import {Route, Routes} from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
+import Home from './pages/Home/Home.tsx';
+import Create from './pages/Create/Create.tsx';
+import Library from './pages/Library/Library.tsx';
+import SideNavbar from './Components/SideNavBar/SideNavbar.tsx';
 
 const App: React.FC = () => {
-  const [sessionID, setSessionID] = useState('');
+  const [sessionID, setSessionID] = useState<string>('');
 
   useEffect(() => {
-    //Check if there's alreadu a session ID in localStorage (to allow persistence across refreshes)
     const existingSessionID = sessionStorage.getItem('sessionID');
-
+    let session = existingSessionID;
+  
     if (!existingSessionID) {
-      //Create a new sessionID if it doesn't already exist
       const newSessionID = Date.now().toString();
       sessionStorage.setItem('sessionID', newSessionID);
       setSessionID(newSessionID);
-
-    } else{
-      //Use the existing sessionID
-      setSessionID(existingSessionID)
+      session = newSessionID;
+    } else {
+      setSessionID(existingSessionID);
     }
-
-    console.log("sessionID:", sessionID);
   
+    console.log("SessionID set in App:", session);
+  }, []); // `sessionID` removed from the dependency array
   
-  }, []);
-
   return (
-    <Routes>
-        <Route path="/home" element = {<Home />}/>
-        <Route path="/create" element={<Create sessionID={sessionID} />}/>
-        
-        {/* <Route path="/library" element = {<Library sessionID={sessionID} />} /> */}
-    </Routes>
-  )
-}
+    <div className="app-container">
+      <SideNavbar />
+      <div className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/create" element={<Create sessionID={sessionID} />} />
+          <Route path="/library" element={<Library sessionID={sessionID} />} />
+        </Routes>
+      </div>
+    </div>
+  );
+};
 
-export default App
+export default App;

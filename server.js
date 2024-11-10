@@ -84,5 +84,30 @@ app.post("/save-image", async (req, res) => {
     }
 });
 
+//Fetch images (only with the correct sessionID) for library. 
+app.get("/fetch-images", async (req, res) => {
+    const sessionID = req.query.sessionID;
+    console.log("Recieved sessionID:", sessionID);
+
+    try {
+        if (!sessionID) {
+            return res.status(400).json({error: "SessionID is required"});
+        
+        }
+
+        //Find images in the database that match the currect sessionID
+        const images = await Image.find({sessionID});
+        if (images.length ==0) {
+            return res.status(200).json({message: "No images yet for this session"});
+        }
+
+        res.status(200).json(images);
+    } catch(error) {
+            console.error("Error fetching images from database", error);
+            res.status(500).json({error: "Error fetching images"});
+        }
+    
+});
+
 
 

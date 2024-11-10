@@ -1,0 +1,40 @@
+
+body {
+    background-color: #1a0b1f;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.home-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between the buttons */
+    margin-top: 20px; /* Space above the buttons */
+}
+
+
+.create-button {
+    background-color: white m !important;
+}
+.create-button, .library-button {
+    background-color: white;  /* Blue color for the button */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding inside the button */
+    font-size: 1.2rem; /* Slightly larger font size */
+    border-radius: 8px; /* Rounded corners */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer on hover */
+    text-decoration: none; /* Remove underline from Link */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition on hover */
+}
+
+.create-button:hover, .library-button:hover {
+    background-color: #357ABD; /* Darker shade of blue on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
