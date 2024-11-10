@@ -1,34 +1,26 @@
-/* General body and layout */
-body {
-    background-color: #1a0b1f;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
 
 /* Side Navbar (Initially hidden) */
 .side-navbar {
-    height: 100vh; /* Full screen height */
-    width: 250px; /* Width of the sidebar */
-    background-color: black;
-    position: fixed; /* Stay fixed on the left side */
+    height: 100vh; 
+    width: 250px; 
+    background-color: #130412;
+    position: fixed; 
     top: 0;
-    left: -250px; /* Initially hidden off the screen */
+    left: -250px; 
     padding-top: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    align-items: center;
     transition: left 0.3s ease; /* Slide in and out effect */
     overflow-y: auto;
+    font-family: "Josefin Sans";
 }
 
 /* Show sidebar when active (when toggled) */
 .side-navbar.open {
-    left: 0; /* Moves sidebar into view */
+    left: 0; 
 }
+
 
 /* Hamburger Menu Button */
 .hamburger-menu {
@@ -38,18 +30,25 @@ body {
     cursor: pointer;
     font-size: 40px;
     color: white;
-    z-index: 1000; /* Make sure it appears on top */
+    z-index: 100; /* Make sure it appears on top */
+    
+}
+
+
+
+.hamburger-menu:hover {
+    transform: scale(1.04);
 }
 
 /* Navbar Links */
 .side-navbar a {
-
     text-decoration: none;
     color: white;
     padding: 15px;
-    text-align: center;
+    text-align: left;
+    margin-left: 20px;
     width: 100%;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     transition: background-color 0.3s;
     border-bottom: none;
 }
@@ -67,7 +66,8 @@ body {
 
 /* Hover effect for navbar links */
 .side-navbar a:hover {
-    background-color: #34495e;
+    background-color: #210b20;
+    transform: scale(1.04);
 }
 
 /* Active link styling */

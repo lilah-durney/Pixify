@@ -63,42 +63,40 @@ const Create: React.FC<CreateProps> = ({sessionID}) => {
 
     return (
         <div className="create-container">
-            {loading ? ( 
-                // Show loading message when the image is being generated
-                <div className="loading-message">Generating image...</div>
-            ) : (
-                <>
-                    <textarea
-                        className="prompt-box"
-                        placeholder="Enter prompt here..."
-                        value={prompt}
-                        onChange={(e) => setPrompt(e.target.value)}
-                        rows={5}
-                        cols={50}
-                    ></textarea>
+            <textarea
+                className="prompt-box"
+                placeholder="Enter prompt here..."
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+                rows={5}
+                cols={50}
+            ></textarea>
     
-                    <button onClick={handleSubmit} className="generate-button">
-                        Create
+            <button onClick={handleSubmit} className="generate-button">
+                Create
+            </button>
+    
+            {/* Show loading spinner if generating image */}
+            {loading && <div className="loading-spinner"></div>}
+    
+            {/* Only show the generated image and 'Add to Library' button if imageURL exists */}
+            {imageURL && !loading && (
+                <div className="generated-image">
+                    <img src={imageURL} alt="Generated image from prompt" />
+                </div>
+            )}
+    
+            {imageURL && !loading && (
+                <div className="add-to-lib-button">
+                    <button onClick={addToLibrary} className="add-to-library-button">
+                        Add to Library
                     </button>
-    
-                    {/* Only render the image and the 'Add to Library' button if an image is generated */}
-                    {imageURL && (
-                        <div className="generated-image">
-                            <img src={imageURL} alt="Generated image from prompt" />
-                        </div>
-                    )}
-    
-                    {imageURL && (
-                        <div className="add-to-lib-button">
-                            <button onClick={addToLibrary} className="add-to-library-button">
-                                Add to Library
-                            </button>
-                        </div>
-                    )}
-                </>
+                </div>
             )}
         </div>
     );
+    
+    
     
  };
 

@@ -2,9 +2,10 @@
 import "./Home.css";
 import { Link } from 'react-router-dom';
 
+
 const Home = () => {
     return (
-        <div>
+        <div className = "hero">
             <h1>Pixify</h1>
 
             <div className="home-buttons">

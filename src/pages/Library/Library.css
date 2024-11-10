@@ -1,27 +1,20 @@
-/* Ensure html and body cover the full viewport height */
-html, body {
-    background-color: #1a0b1f;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    min-height: 100vh;
-    overflow-x: hidden; /* Prevents horizontal scrolling if content overflows */
-}
 
-/* Center content and give padding to the main container */
+
 .library-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
 }
 
 .library-title {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin-top: 0;
+    font-size: 3rem;
+   
+    font-family: "Irish Grover";
     text-align: center;
 }
 
@@ -44,42 +37,69 @@ html, body {
 .library-image {
     width: 100%;
     height: auto;
-    object-fit: contain; /* or cover, depending on your preference */
-    display: block; /* Prevents extra space below images */
+    object-fit: contain; 
+    display: block; 
     border-radius: 5px;
 }
 
 
 .image-prompt {
     margin-top: 10px;
-    color: #ccc;
+    color: white;
+    font-family: Rubik;
 }
 
 .error-message, .loading-message {
-    color: #ffcccb;
+    color: white;
     font-size: 1.2rem;
     text-align: center;
     margin: 20px 0;
 }
 
+
+
+
 .no-images {
-    font-size: 1.2rem;
-    color: #555;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: white;
+    
+
+    font-family: "Josefin Sans";
+    font-size: 1.7rem;
+    color: #170516;
     text-align: center;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    margin-top: 50px;
+
+    
+    
+
+    
+    
+
 }
 
+
 .create-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    background-color: #170516;  
+    color: white; 
+    padding: 10px 20px; 
+    font-size: 1.2rem; 
+    border-radius: 20px; 
+    border: none; 
+    cursor: pointer; 
+    text-decoration: none; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
 }
 
 .create-button:hover {
-    background-color: #0056b3;
+    background-color: #30162f;
+    transform: scale(1.03); 
 }

@@ -45,52 +45,57 @@ const Library: React.FC<LibraryProps> = ({ sessionID }) => {
             const response = await axios.get(`http://localhost:3000/fetch-images?sessionID=${sessionID}`);
             console.log("Library sessionID", sessionID);
             console.log("Fetched images response:", response);
-
-            //If response is an array (ie the library db has images) then return the array
+    
+            // Check if the response is an array, return an empty array if not
             if (Array.isArray(response.data)) {
                 return response.data;
             } else {
-                //Return empty array if no images in library db.
+                // Return an empty array if no images found or response is not an array
                 return [];
-                
             }
-            
         } catch (error) {
             console.error("Error fetching images", error);
             throw new Error("Could not fetch images");
         }
     };
+    
 
     if (loading) {
         return <div className="loading-message">Loading library...</div>;
     }
-
+    
     if (error) {
         return <div className="error-message">{error}</div>;
     }
-
+    
     return (
         <div className="library-container">
-            <h1 className="library-title">Library Page</h1>
-            <div className="library-grid">
-                {images.length === 0 ? (
+            <h1 className="library-title">Library</h1>
+    
+            {/* Show the "No images" message if no images are available */}
+            {images.length === 0 ? (
+                <div className="no-images-container">
                     <div className="no-images">
-                        <p>No images have been added yet to the library</p>
+                        <p>Library is empty.</p>
                         <Link to="/create">
                             <button className="create-button">Create</button>
                         </Link>
                     </div>
-                ) : (
-                    images.map((image, index) => (
+                </div>
+            ) : (
+                // Only render the library grid if there are images
+                <div className="library-grid">
+                    {images.map((image, index) => (
                         <div key={index} className="library-item">
                             <img src={image.imageURL} alt={`Generated for ${image.prompt}`} className="library-image" />
                             <p className="image-prompt">{image.prompt}</p>
                         </div>
-                    ))
-                )}
-            </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
+    
 };
 
 export default Library;

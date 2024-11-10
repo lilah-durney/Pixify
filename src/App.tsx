@@ -5,6 +5,7 @@ import Home from './pages/Home/Home.tsx';
 import Create from './pages/Create/Create.tsx';
 import Library from './pages/Library/Library.tsx';
 import SideNavbar from './Components/SideNavBar/SideNavbar.tsx';
+import "./index.css";
 
 const App: React.FC = () => {
   const [sessionID, setSessionID] = useState<string>('');
@@ -23,7 +24,7 @@ const App: React.FC = () => {
     }
   
     console.log("SessionID set in App:", session);
-  }, []); // `sessionID` removed from the dependency array
+  }, []); // sessionID removed from the dependency array
   
   return (
     <div className="app-container">
